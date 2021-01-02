@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,14 +8,14 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+
 import Footer from '../footer/Footer';
 
 
-const Edit = ({ navigation }) => {
+const ReadyToExamSubjects = ({ navigation }) => {
 
   const whichPage = navigation.getParam('whichPage');
-
-
+  
   return (
     <>
       <View style={styles.body}>
@@ -39,4 +40,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Edit
+export default ReadyToExamSubjects

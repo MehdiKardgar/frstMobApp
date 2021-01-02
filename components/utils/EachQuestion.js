@@ -4,17 +4,16 @@ import { View , Text , TouchableOpacity , StyleSheet } from 'react-native';
 
 import { windowWidth } from './Dimensions';
 
-
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 
-const SubBranch = ({navigation, save}) => {
+const EachQuestion = ({navigation, save}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity 
         onPress={ () => navigation.navigate('SubBranch') }
         style={styles.branch}> 
-        <Text style={styles.subtitle}>زیر شاخه</Text>
+        <Text style={styles.subtitle}>سوال</Text>
         <View>
           <MaterialIcon size={40} color="white" name="east" />
         </View>
@@ -67,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SubBranch
+export default EachQuestion
