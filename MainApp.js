@@ -14,7 +14,32 @@ import Navigator from './components/stack/Homestack';
 import Splashscreen from './components/splashscreen/Splashscreen';
 import Phone from './components/phone/Phone';
 
+import axios from 'axios';
+
+import { CONFIRM_SMS_URL } from './components/URL/Urls';
+
 import { getData , removeData , existsData } from './components/AsyncStorage/SecureStorage';
+
+const requestToServerForConfirmSms = async (userInfo) => {
+  try {
+    let result = await axios({
+      method: 'POST',
+      url: CONFIRM_SMS_URL,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data : {
+        "phone" : `${userInfo.phoneNumber}`,
+        "sms" : `${userInfo.sms}`
+      }
+    });
+    // console.log(result.data);
+    return result.data;
+  } catch (e) {
+    console.log("Error on Request to Server...")
+  }
+}
+
 
 const MainApp = () => {
 
@@ -27,23 +52,35 @@ const MainApp = () => {
       // await removeData();
       let userInfo = await getData();
       console.log(userInfo);
+      let result = await requestToServerForConfirmSms(userInfo);
+      console.log(result);
       if( userInfo && userInfo.phoneNumber && userInfo.sms ) {
-        setPhoneReady(true);
+          if ( result && result.success == true ) {
+            setSplash(false);
+            setPhoneReady(true);
+            // console.log('1')
+          } else {
+            setPhoneReady(false);
+            // console.log('2')
+          }
+          
       } else {
-        setPhoneReady(false);
+        // removeData();
+        setSplash(false);
+        // console.log('3')
       }
     }
     doTheJob();
-    setTimeout( () => {
-      setSplash(false);
-    } , 1000)
+    // setTimeout( () => {
+    //   setSplash(false);
+    // } , 1000)
   } );
 
   if(splash) {
     return (
       <Splashscreen />
     );
-  } else if(phoneReady == false) {
+  } else if( phoneReady == false) {
     return (
       <Phone setPhoneReady={setPhoneReady}/>
     );
