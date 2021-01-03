@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { View , Text , TouchableOpacity , StyleSheet } from 'react-native'
+import { windowWidth } from './Dimensions'
 import { LalezarRegular } from './Fonts'
 
 export const ActiveButton = ({sex , changeSex}) => {
@@ -37,7 +38,7 @@ export const DeactiveButton = ({sex , changeSex}) => {
 const styles = StyleSheet.create({
   activebutton : {
     backgroundColor : '#4D7C8A',
-    width : 120,
+    width : windowWidth / 2,
     borderRadius : 55,
     
     justifyContent : 'center',
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   },
   deactivebutton : {
     backgroundColor : '#CEE0E5',
-    width : 120,
+    width : windowWidth / 4,
     borderRadius : 55,
     
     justifyContent : 'center',

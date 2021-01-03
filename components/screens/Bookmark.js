@@ -173,7 +173,7 @@ const tabStyles = StyleSheet.create({
     //custom styles
     backgroundColor : '#6FA6B6',
     borderColor : '#51344D',
-    borderBottomWidth : 10,
+    // borderBottomWidth : 10,
     borderRadius : 0,
   },
   firstTabStyle: {

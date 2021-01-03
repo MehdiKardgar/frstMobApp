@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React , { useRef ,  useState , useEffect } from 'react';
+import React , { useRef ,  useState , useEffect , createContext } from 'react';
 
 import Navigator from './components/stack/Homestack';
 
@@ -15,6 +15,8 @@ import Splashscreen from './components/splashscreen/Splashscreen';
 import Phone from './components/phone/Phone';
 
 import axios from 'axios';
+
+import { useSelector , useDispatch } from 'react-redux'
 
 import { CONFIRM_SMS_URL } from './components/URL/Urls';
 
@@ -43,6 +45,10 @@ const requestToServerForConfirmSms = async (userInfo) => {
 
 const MainApp = () => {
 
+  const theme = useSelector(state => state.ThemeReducer.theme)
+
+  const ThemeContext = createContext(theme);
+
   const [splash , setSplash] = useState(true);
 
   const [phoneReady , setPhoneReady]   = useState(false);
@@ -60,6 +66,7 @@ const MainApp = () => {
             setPhoneReady(true);
             // console.log('1')
           } else {
+            setSplash(false);
             setPhoneReady(false);
             // console.log('2')
           }
@@ -86,7 +93,9 @@ const MainApp = () => {
     );
   } else {
     return (
-      <Navigator />
+      <ThemeContext.Provider theme={theme}>
+        <Navigator />
+      </ThemeContext.Provider>
     );
   }
   

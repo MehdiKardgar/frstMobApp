@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useContext } from 'react';
 
 import {
   SafeAreaView,
@@ -13,6 +13,8 @@ import {
 
 import Header from '../header/Header';
 
+import ThemeProvider from './ThemeProvider'
+
 
 import { windowHeight , windowWidth } from '../utils/Dimensions';
 import SubBranch from '../utils/SubBranch';
@@ -21,8 +23,10 @@ import { FlatList } from 'react-native-gesture-handler';
 import Footer from '../footer/Footer';
 import SubChapterLogo from '../utils/SubChapterLogo';
 
+
 const Branch = ({ navigation }) => {
-  
+
+
   const numbers = [1,2,3,4,5,6,7,8,9,10];
 
   const title = navigation.getParam('title');
@@ -39,7 +43,7 @@ const Branch = ({ navigation }) => {
 
         <ScrollView >
 
-          <SubChapterLogo title={title} logo={logo} />
+          {/* <SubChapterLogo title={title} logo={logo} /> */}
 
           <View style={styles.braches}>
 
@@ -72,7 +76,7 @@ const Branch = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor : '#6FA6B6',
+    backgroundColor : 'black',
     flex : 1,
   },
   body : {

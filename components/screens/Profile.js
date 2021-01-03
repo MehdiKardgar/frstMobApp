@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     width : windowWidth / 2.5 ,
     height : windowWidth / 2.5 ,
     backgroundColor : '#CEE0E5' ,
-    borderRadius : windowWidth / 2.5 / PixelRatio.get(),
+    borderRadius : windowWidth / 2 / PixelRatio.get(),
     position : 'absolute',
     // borderWidth : 3,
     alignSelf : 'center',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize : 25,
   } , 
   infoContainer : {
-    marginTop : 100,
+    marginTop : windowHeight / 5,
   },
   info : {
     marginHorizontal : 20,
